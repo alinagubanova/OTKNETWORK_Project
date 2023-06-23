@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "0aee49c2-40ef-4f69-bb4a-5801aff7c1dc",
+		"name": "06-23-2023 California Marketing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27865671"
+	},
+	"item": [
+		{
+			"name": "Create New Postal Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 1000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Content-Length\", \"45\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"fullName\": {\r\n            \"firstName\": \"Tom\",\r\n            \"lastName\": \"Anderson\"\r\n        },\r\n        \"company\": \"Matrix Co\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"567 West Lake Street\",\r\n        \"addressLine2\": \"777\",\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"Chicago\",\r\n        \"country\": \"USA\",\r\n        \"subdivision\": \"IL\",\r\n        \"zipCode\": \"60661\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"location\": null\r\n    },\r\n    \"setAsDefault\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses"
+			},
+			"response": []
+		},
+		{
+			"name": "Show All Postal Addresses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Specific Postal Addresses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.address.id).to.eql(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/c20badf7-7d84-458f-b95c-57e1eab36102"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Postal Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct info\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"{}\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"id\": \"11e91634-973c-4cad-b396-59c3ac381389\",\r\n        \"fullName\": {\r\n            \"firstName\": \"Tom\",\r\n            \"lastName\": \"Anderson\"\r\n        },\r\n        \"company\": \"Matrix Company\",\r\n        \"taxInfo\": {\r\n            \"id\": null,\r\n            \"type\": null\r\n        },\r\n        \"addressLine1\": \"567 West Lake Street\",\r\n        \"addressLine2\": \"777\",\r\n        \"street\": {\r\n            \"name\": null,\r\n            \"number\": null\r\n        },\r\n        \"city\": \"Chicago\",\r\n        \"country\": \"USA\",\r\n        \"subdivision\": \"IL\",\r\n        \"zipCode\": \"60661\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"location\": null\r\n    },\r\n    \"setAsDefault\": false,\r\n    \"fieldMask\": {\r\n        \"paths\": [\r\n            \"fullName.firstName\",\r\n            \"fullName.lastName\",\r\n            \"company\",\r\n            \"addressLine1\",\r\n            \"addressLine2\",\r\n            \"city\",\r\n            \"country\",\r\n            \"subdivision\",\r\n            \"zipCode\",\r\n            \"phoneNumber\",\r\n            \"setAsDefault\"\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/c20badf7-7d84-458f-b95c-57e1eab36102"
+			},
+			"response": []
+		},
+		{
+			"name": "Show Updated Postal Addresses",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has ID value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.address.id).to.eql(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.address.company).to.eql(\"Matrix Company\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/c20badf7-7d84-458f-b95c-57e1eab36102"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Postal Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct info\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"{}\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/c20badf7-7d84-458f-b95c-57e1eab36102"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Deleted Postal Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 is OK\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Size is less than 3000B\", function () {\r",
+							"    pm.expect(pm.response.responseSize).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Header is correct\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=utf-8\");\r",
+							"    pm.response.to.have.header(\"Connection\", \"keep-alive\");\r",
+							"    pm.response.to.have.header(\"Server\", \"Pepyaka/1.19.10\");\r",
+							"    pm.response.to.have.header(\"X-Content-Type-Options\", \"nosniff\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body has correct info\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"c20badf7-7d84-458f-b95c-57e1eab36102\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Body is OK\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"cant_find_address_by_id, details: {\\\"cant_find\\\":\\\"address_id: c20badf7-7d84-458f-b95c-57e1eab36102\\\"}\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://addresses.wixapps.net/_api/addresses-web/v1/addresses/c20badf7-7d84-458f-b95c-57e1eab36102"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": {
+			"value": "RidGkaF3BvCXUH-zGdnVBx2yhdU29wa5Hmt1G4vK5bM.eyJpbnN0YW5jZUlkIjoiZjQ2Y2Q1MDItZjcyZi00NGY3LTk2MzgtNWRhMWRlYjBiNGU3IiwiYXBwRGVmSWQiOiIxNTA1Yjc3NS1lODg1LWViMWItYjY2NS0xZTQ4NWQ5YmY5MGUiLCJtZXRhU2l0ZUlkIjoiMjhiNzkzZDYtNTQyNC00MDU4LTgwNDktMDI2YTRkYjAyODJmIiwic2lnbkRhdGUiOiIyMDIzLTA2LTIzVDE5OjA3OjEwLjQ0NFoiLCJ1aWQiOiI0ODExN2VmYS1hY2I2LTQ0YjQtOGExMC1jYmQxNDBiNTFlOWMiLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjAzMjVkMTg3LWU0N2EtNGU3MS1hOGI4LWU0M2QyZjRkZDUzNCIsImJpVG9rZW4iOiJkY2RiNDZkNC1hMzBiLTA0YWYtMTY3MS01ZmNiOTMwMDljYzgiLCJzaXRlT3duZXJJZCI6ImY5MTRmMTFjLWFhYjMtNDUyNy04ZDRlLWJhYjc2MjE0M2E2MCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMy0wNi0yM1QyMzowNzoxMC40NDRaIiwiaGFzVXNlclJvbGUiOmZhbHNlfQ",
+			"key": "Authorization"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
